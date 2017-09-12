@@ -138,12 +138,12 @@ if (isset($_GET['action']) && isset($_GET['username']) && isset($_GET['password'
                             <li<?php is_active('details'); ?>><a href="<?php echo DETAILS; ?>"><i class="icon-search icon-white"></i> Details</a></li>
                             <li<?php is_active('services'); ?>><a href="<?php echo SERVICES; ?>"><i class="icon-cog icon-white"></i> Services</a></li>
                             <li<?php is_active('disks'); ?>><a href="<?php echo DISKS; ?>"><i class="icon-disks icon-white"></i> Disks</a></li>
-                            <li<?php is_active('gpio'); ?>><a href="<?php echo GPIO; ?>"><i class="icon-random icon-white"></i> GPIO</a></li>
+                            <!-- <li<?php is_active('gpio'); ?>><a href="<?php echo GPIO; ?>"><i class="icon-random icon-white"></i> GPIO</a></li>-->
                         </ul>
                         <ul class="nav pull-right">
                             <li><a href="<?php echo LOGOUT; ?>"><i class="icon-off icon-white"></i> Logout</a></li>    
-                            <li><a data-rootaction="reboot" class="rootaction" href="#"><i class="icon-repeat icon-white"></i> Reboot</a></li>
-                            <li><a data-rootaction="shutdown" class="rootaction" href="#"><i class="icon-stop icon-white"></i> Shutdown</a></li>             
+                            <!-- <li><a data-rootaction="reboot" class="rootaction" href="#"><i class="icon-repeat icon-white"></i> Reboot</a></li>
+                            <li><a data-rootaction="shutdown" class="rootaction" href="#"><i class="icon-stop icon-white"></i> Shutdown</a></li>             -->
                         </ul>
                     </div>
                 </div>

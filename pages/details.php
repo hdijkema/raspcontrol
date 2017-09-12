@@ -188,7 +188,11 @@ function shell_to_html_table_result($shellExecOutput) {
                 <td class="check"><i class="icon-fire"></i> System Temperature</td>
                 <td class="icon"><?php echo icon_alert($temp['alert']); ?></td>
                 <td class="infos">
+                  <div class="progress" id="popover-temp">
+                    <div class="bar bar-<?php echo $temp['alert']; ?>" style="width: <?php echo $temp['percentage']; ?>%;"><?php echo $temp['percentage']; ?>%</div>
+                  </div>
                     <span class="text-info"><?php echo $temp['degrees']; ?></span>
+                    (<span class="text-info"><?php echo $temp['fahrenheit']; ?></span>)
                 </td>
             </tr>
             <?php

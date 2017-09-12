@@ -35,7 +35,9 @@ class Temp {
            else if ($temp > 60) { $result['alert'] = 'warning'; }
            else { $result['alert'] = 'succes'; }
         }
+        $result['fahrenheit'] = round($temp * 1.8 + 32) . "°F";;
         $result['degrees'] = $currenttemp;
+        $result['percentage'] = round(($temp / $MAXTEMP) * 100.0);
 
         return $result;
     }

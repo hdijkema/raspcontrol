@@ -130,7 +130,8 @@ function shell_to_html_table_result($shellExecOutput) {
                 </div>
                 <div id="popover-cpu-head" class="hide">Top CPU eaters</div>
                 <div id="popover-cpu-body" class="hide"><?php echo shell_to_html_table_result($cpu_heat['detail']); ?></div>
-                heat: <span class="text-info"><?php echo $cpu_heat['degrees']; ?>°F</span>
+                heat: <span class="text-info"><?php echo $cpu_heat['degrees']; ?>°C</span>
+                (<span class="text-info"><?php echo $cpu_heat['fahrenheit']; ?>°F</span>)
             </td>
         </tr>
 
@@ -180,10 +181,11 @@ function shell_to_html_table_result($shellExecOutput) {
         </tr>
 
         <?php
+        #echo "<pre>".$temp['degrees']."</pre>";
         if ($temp['degrees'] != "N/A") {
             ?>
             <tr id="check-temp">
-                <td class="check"><i class="icon-fire"></i> DS18B20</td>
+                <td class="check"><i class="icon-fire"></i> System Temperature</td>
                 <td class="icon"><?php echo icon_alert($temp['alert']); ?></td>
                 <td class="infos">
                     <span class="text-info"><?php echo $temp['degrees']; ?></span>

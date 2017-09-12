@@ -12,15 +12,29 @@ class Temp {
     public static function temp() {
         $result = array();
 
-        $temp_file = "/sys/bus/w1/devices/28-000004e8a0f3/w1_slave";
+        #$fh = popen('vcgencmd measure_temp', 'r');
+        #$out = fread($fh, 1024);
+        #pclose($fh);
+        #echo "<pre>".$out."</pre>";
+
+        #$temp_file = "/sys/bus/w1/devices/28-000004e8a0f3/w1_slave";
+        $temp_file = "/sys/class/thermal/thermal_zone0/temp";
         if (file_exists($temp_file)) {
             $lines = file($temp_file);
-            $pos = strpos($lines[1], "t=");
-            $currenttemp = round(substr($lines[1], $pos + 2) / 1000, 1) . "°C";
+            #$pos = strpos($lines[1], "t=");
+            $temp = round($lines[0] / 1000, 1);
+            $currenttemp = $temp . "°C";
         } else {
+            $temp = -1;
             $currenttemp = "N/A";
         }
-        $result['alert'] = 'success';
+        if ($temp < 0) { $result['alert'] = 'error'; }
+        else {
+           $MAXTEMP = 85.0;
+           if ($temp > 80) { $result['alert'] = 'danger'; }
+           else if ($temp > 60) { $result['alert'] = 'warning'; }
+           else { $result['alert'] = 'succes'; }
+        }
         $result['degrees'] = $currenttemp;
 
         return $result;

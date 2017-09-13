@@ -26,6 +26,7 @@ class Network {
            $rx = round($rx, 2);
            $tx = round($tx, 2);
            $net = file_get_contents("$dir/tmp/raspcontrol_net");
+           $last = file_get_contents("$dir/tmp/raspcontrol_last");
         } else {
           $net = "eth0";
           $data = $ssh->shell_exec_noauth("/sbin/ifconfig eth0 | grep bytes");
@@ -39,13 +40,15 @@ class Network {
           $txRaw = $ltx[5] / 1024 / 1024;
           $rx = round($rxRaw, 2);
           $tx = round($txRaw, 2);
+          $last = "just now";
         }
 
         return array(
             'up' => $tx,
             'down' => $rx,
             'total' => $rx + $tx,
-            'net' => $net
+            'net' => $net,
+            'lasttime' => $last
         );
     }
 

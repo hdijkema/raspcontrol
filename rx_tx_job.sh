@@ -25,6 +25,7 @@ AWK=awk
 GREP=grep
 IFCONFIG=/sbin/ifconfig
 CAT=cat
+DATE=date
 
 RX_CURRENT=`$IFCONFIG $INTERFACE | $GREP -i rx | $GREP -i bytes | $AWK '{print $5}'`
 RX_PREV=$RX_CURRENT
@@ -66,4 +67,5 @@ else
 fi
 
 echo $INTERFACE >$TMPDIR/raspcontrol_net
+$DATE >$TMPDIR/raspcontrol_last
 

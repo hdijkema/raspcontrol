@@ -51,9 +51,9 @@ class CPU {
         $result['degrees'] = round($currenttemp /1000);
         $result['percentage'] = round($result['degrees'] / self::$MaxTemp * 100);
 
-        if ($result['percentage'] >= '80')
+        if ($result['degrees'] >= '80')
             $result['alert'] = 'danger';
-        elseif ($result['percentage'] >= '60')
+        elseif ($result['degrees'] >= '60')
             $result['alert'] = 'warning';
         else
             $result['alert'] = 'success';

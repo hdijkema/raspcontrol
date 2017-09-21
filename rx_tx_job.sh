@@ -13,7 +13,6 @@ INTERFACE=eth0
 
 INIT=1
 
-echo $0 | sed -e 's%/[^/]*$%%'
 TMPDIR=`echo $0 | sed -e 's%[/][^/]*$%%'`
 TMPDIR="$TMPDIR/tmp";
 if [ ! -d $TMPDIR ]; then
@@ -69,3 +68,5 @@ fi
 echo $INTERFACE >$TMPDIR/raspcontrol_net
 $DATE >$TMPDIR/raspcontrol_last
 
+DT=`/bin/date +%Y%m%d,%T`
+echo $DT,$TX,$RX >>$TMPDIR/raspcontrol_net.log
